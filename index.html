@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampurnanand Gupta - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            transform: translateZ(50px);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(255, 255, 255, 0.2);
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .card-3d:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* About Section */
+        .about-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Goals Section */
+        .goals-list ul {
+            list-style: none;
+        }
+
+        .goals-list li {
+            padding: 20px 30px;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #ffffff;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .goals-list li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .goals-list li:before {
+            content: "→ ";
+            margin-right: 15px;
+            color: #ffffff;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 20px 0;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 2px solid #ffffff;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Geometric Background Effect */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            nav .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SAM</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sampurnanand Gupta</h1>
+            <p class="subtitle">B.Tech CSE Student · Tech Enthusiast · Future Entrepreneur</p>
+            <a href="#about" class="cta-button">Explore My Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content card-3d">
+            <p>
+                I'm Sam, a first-year B.Tech Computer Science Engineering student at Chandigarh University, Unnao Campus. 
+                I'm passionate about technology, artificial intelligence, programming, and cybersecurity.
+            </p>
+            <p>
+                My journey is just beginning, but I'm extremely determined to grow every day. I believe in continuous 
+                learning and pushing my limits. My dream is to become an expert in technology and build my own successful 
+                tech startup.
+            </p>
+            <p>
+                I'm naturally curious, open-minded, and eager to become intellectually strong. I love exploring new 
+                technologies and understanding how things work behind the scenes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Interests</h2>
+        <div class="skills-grid">
+            <div class="skill-card card-3d">
+                <div class="skill-icon">💻</div>
+                <h3>Programming</h3>
+                <p>Learning C, Python, and other languages. Building strong foundations in coding.</p>
+            </div>
+            <div class="skill-card card-3d">
+                <div class="skill-icon">🤖</div>
+                <h3>Artificial Intelligence</h3>
+                <p>Exploring AI and Machine Learning to understand the future of technology.</p>
+            </div>
+            <div class="skill-card card-3d">
+                <div class="skill-icon">🔒</div>
+                <h3>Cybersecurity</h3>
+                <p>Fascinated by security concepts and protecting systems from threats.</p>
+            </div>
+            <div class="skill-card card-3d">
+                <div class="skill-icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>Creating modern and responsive websites using HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="skill-card card-3d">
+                <div class="skill-icon">📚</div>
+                <h3>Continuous Learning</h3>
+                <p>Always eager to learn new technologies and best practices.</p>
+            </div>
+            <div class="skill-card card-3d">
+                <div class="skill-icon">🎯</div>
+                <h3>Problem Solving</h3>
+                <p>Developing logical thinking through coding challenges and projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals">
+        <h2 class="section-title">Future Goals</h2>
+        <div class="goals-list card-3d">
+            <ul>
+                <li>Build a successful tech startup</li>
+                <li>Become an expert in AI, Machine Learning, and Cybersecurity</li>
+                <li>Master multiple programming languages and frameworks</li>
+                <li>Develop cutting-edge applications and software solutions</li>
+                <li>Contribute to open-source projects and tech community</li>
+                <li>Build innovative products that solve real-world problems</li>
+                <li>Stay updated with latest technology trends and advancements</li>
+                <li>Create impactful tech solutions for society</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info card-3d">
+            <p>Let's connect and build something amazing together.</p>
+            <p>📧 <a href="mailto:iamsampurnanandgupta@gmail.com">iamsampurnanandgupta@gmail.com</a></p>
+            <p>📱 <a href="tel:+918931035196">+91 8931035196</a></p>
+            <p>📍 Chandigarh University, Unnao Campus</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/sampurnanand-gupta-9b486037a" target="_blank">💼 LinkedIn</a>
+                <a href="https://x.com/isamhax" target="_blank">𝕏 Twitter</a>
+                <a href="https://www.instagram.com/isamhax/" target="_blank">📷 Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Sampurnanand Gupta · Designed with passion</p>
+    </footer>
+</body>
+</html>
